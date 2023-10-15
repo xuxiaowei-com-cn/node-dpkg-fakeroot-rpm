@@ -1,5 +1,7 @@
 stages:
   - docker-build
+  # 代码同步
+  - sync
 
 docker-build:
   stage: docker-build
@@ -16,3 +18,8 @@ docker-build:
   # https://docs.gitlab.com/ee/ci/yaml/index.html#rules
   rules:
     - if: $CI_COMMIT_TAG
+
+# 嵌入
+include:
+  # 同步代码
+  - /sync.yml
